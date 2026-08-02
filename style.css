@@ -1,0 +1,114 @@
+body {font-family: "Poppins", sans-serif;}
+* {box-sizing: border-box;}
+
+/* Container pembungkus logo */
+.gambar {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 20px;
+  width: 100%;
+  margin-top: 35px !important;    /* Memberi jarak dari atap browser */
+  margin-bottom: 15px !important; /* Jarak ke judul Register Surat Keluar */
+  
+  text-align: center;
+}
+/* Ukuran logo agar seimbang dengan judul */
+.gambar img {
+  width: 65px;         /* Ukuran ideal agar seimbang dengan teks judul */
+  height: 65px;        /* Menjaga proporsi */
+  object-fit: contain; /* Agar logo tidak gepeng/terdistorsi */
+  display: block;
+}
+
+/* Memastikan judul juga berada di tengah */
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Nomor Surat Otomatis */
+
+.nomor-surat-box {
+  border: 2px dashed #3b82f6;
+  background-color: #eff6ff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #15803d; /* Warna hijau seperti di gambar */
+  font-weight: 600;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nomor-surat-box.empty {
+  color: #9ca3af;
+  font-weight: 400;
+  justify-content: flex-start;
+}
+
+.btn-copy {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.btn-copy:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.submitBtn {
+  background-color: #3b82f6;
+  color: white; /* Ubah ke white agar teks lebih terbaca pada background biru */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submitBtn:hover {
+  background-color: #2563eb; /* Efek gelap saat tombol di-hover */
+}
