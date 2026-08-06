@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Surat Keluar - Rutan Kelas IIB Sinjai</title>
+  
+  <!-- Font Poppins & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Container Utama (Kartu Putih di Tengah) -->
+  <div class="container">
+    
+    <!-- Header Logo -->
+    <div class="gambar">
+      <img src="./assets/Logo-Kementrian-Imigrasi-dan-Pemasyarakatan.png" alt="Logo Kemenimipas">
+      <img src="./assets/Logo-Pas.png" alt="Logo Pemasyarakatan">
+    </div>
+
+    <!-- Judul Form -->
+    <h3 class="title">REGISTER SURAT KELUAR<br>RUTAN KELAS IIB SINJAI</h3>
+
+    <!-- Link Panduan -->
+    <a href="panduan/KODE KLASIFIKASI SURAT 2026.pdf" target="_blank" class="link-panduan">
+    <i class="fas fa-book icon-kedip"></i> Panduan Klasifikasi Surat
+</a>
+
+    <!-- Form Inputan -->
+    <form action="/action_page.php" name="Agenda-Surat-Keluar">
+      
+      <!-- Pembuat Surat -->
+      <div class="form-group">
+        <label for="namaPegawai">Pembuat Surat</label>
+        <input type="text" id="namaPegawai" name="pembuat-surat" placeholder="Nama Anda" required>
+      </div>
+
+      <!-- Tujuan Surat -->
+      <div class="form-group">
+        <label for="tujuanSurat">Tujuan Surat</label>
+        <input type="text" id="tujuanSurat" name="tujuan-surat" placeholder="Tujuan Surat" required>
+      </div>
+
+      <!-- Tanggal Surat -->
+      <div class="form-group">
+        <label for="tanggalSurat">Tanggal Surat</label>
+        <input type="date" name="tanggal-surat" id="tanggalSurat" required>
+      </div>
+
+      <!-- Perihal -->
+      <div class="form-group">
+        <label for="perihal">Perihal</label>
+        <input type="text" id="perihal" placeholder="Isikan perihal surat..." name="perihal" required>
+      </div>
+
+      <!-- Tembusan (Opsional) -->
+      <div class="form-group">
+        <label for="tembusan">Tembusan (Opsional)</label>
+        <input type="text" id="tembusan" placeholder="Tembusan" name="tembusan">
+      </div>
+
+      <!-- Dropdown 1: Kode Utama -->
+      <div class="form-group">
+        <label for="kodeUtama">Kode Surat Utama</label>
+        <select id="kodeUtama" name="kode-surat" onchange="updateSubKode()" required>
+          <option value="">-- Pilih Kode Utama --</option>
+          <option value="PR">Perencanaan (PR)</option>
+          <option value="KU">Keuangan (KU)</option>
+          <option value="OT">Organisasi dan Tatalaksana (OT)</option>
+          <option value="SA">Sumber Daya Manusia Aparatur (SA)</option>
+          <option value="PB">Pengelolaan Barang Milik Negara (PB)</option>
+          <option value="KS">Kerja Sama (KS)</option>
+          <option value="HK">Hukum (HK)</option>
+          <option value="UM">Umum (UM)</option>
+          <option value="PW">Pengawasan (PW)</option>
+          <option value="TI">Teknologi Informasi (TI)</option>
+          <option value="PK">Pemasyarakatan (PK)</option>
+          <option value="GR">Keimigrasian (GR)</option>
+          <option value="SM">Sumber Daya Manusia Imigrasi dan Pemasyarakatan (SM)</option>
+          <option value="PS">Pusat Strategi Kebijakan (PS)</option>
+        </select>
+      </div>
+
+      <!-- Dropdown 2: Sub-Kode / Klasifikasi Surat -->
+      <div class="form-group">
+        <label for="subKode">Sub-Kode / Klasifikasi Surat</label>
+        <select id="subKode" name="klasifikasi-surat" onchange="generateNomorSurat()" required>
+          <option value="">-- Pilih Kode Utama Terlebih Dahulu --</option>
+        </select>
+      </div>
+
+      <!-- Dropdown 3: Jenis Surat -->
+      <div class="form-group">
+        <label for="jenisSurat">Jenis Surat</label>
+        <select id="jenisSurat" name="jenis-surat" onchange="generateNomorSurat()" required>
+          <option value="">-- Pilih Kode Utama Terlebih Dahulu --</option>
+          <option value="UMUM">Surat Umum</option>
+          <option value="SK">SK (Surat Keputusan)</option>
+        </select>
+      </div>
+
+      <!-- Tampilan Nomor Surat Otomatis -->
+      <div class="form-group">
+        <label>Nomor Surat</label>
+        <div id="nomorSuratBox" class="nomor-surat-box empty">
+          Pilih Sub-Kode Surat
+        </div>
+        <!-- Hidden Input untuk menampung data ke Google Sheets/Database -->
+        <input type="hidden" id="nomorSuratInput" name="nomor-surat">
+      </div>
+
+      <!-- Penyesuaian Inputan (Checkbox Konfirmasi) -->
+      <div class="form-group" style="margin-top: 20px;">
+        <label style="font-weight: normal; cursor: pointer;">
+          <input type="checkbox" required>
+          Apakah Seluruh Data Telah Sesuai?
+        </label>
+      </div>
+
+      <button type="submit" class="submitBtn btn-kirim">Simpan dan gunakan nomor</button>
+      <button type="button" class="submitBtn btn-loading d-none" disabled>
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span role="status">Loading...</span>
+      </button>
+
+    </form>
+  </div>
+
+  <!-- Script JS Eksternal -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
