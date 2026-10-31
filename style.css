@@ -1,0 +1,493 @@
+/* Import Font Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background Utama Biru Tua (Menyeluruh) */
+body {
+  background-color: #0b3c6d; /* Warna biru elegan sesuai referensi */
+  color: #333333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Container Putih di Tengah (Kartu Formulir) */
+.container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 650px;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+}
+
+/* Logo Header */
+.gambar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.gambar img {
+  height: 65px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Judul Formulir */
+.title {
+  text-align: center;
+  color: #0b3c6d;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+
+.format-hint {
+  font-size: 11px;
+  color: #0284c7;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Container Link Panduan & Pedoman Format Tata Naskah Dinas */
+.panduan-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.link-panduan {
+  display: inline-flex;
+  align-items: center;
+  color: #0284c7;
+  font-weight: 500;
+  font-size: 13.5px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link-panduan:hover {
+  text-decoration: underline;
+  color: #0369a1;
+}
+
+.link-panduan .text-amber {
+  color: #f59e0b;
+}
+
+.link-panduan .text-emerald {
+  color: #10b981;
+}
+
+/* Tampilan Mobile: Display Block dengan margin pas (tidak terlalu jauh) */
+@media (max-width: 576px) {
+  .panduan-container {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .link-panduan {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .link-panduan:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Animasi khusus ikon buku (hilang-muncul) */
+.icon-kedip {
+  margin-right: 6px;
+  animation: kedip 1.5s infinite ease-in-out;
+}
+
+@keyframes kedip {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Form Grouping & Label */
+.form-group, form > div {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+/* Styling Input & Select Field */
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #1e293b;
+  outline: none;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: #0b3c6d;
+  box-shadow: 0 0 0 3px rgba(11, 60, 109, 0.15);
+}
+
+/* ======================================================== */
+/* STYLING CUSTOM DROPDOWN SUB-KODE (SOLUSI ANTI MELUAS)     */
+/* ======================================================== */
+.custom-dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.custom-dropdown-btn {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #1e293b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  gap: 10px;
+}
+
+.custom-dropdown-btn:hover:not(.disabled) {
+  border-color: #0b3c6d;
+}
+
+.custom-dropdown-btn.disabled {
+  background-color: #f8fafc;
+  color: #94a3b8;
+  cursor: not-allowed;
+  border-color: #e2e8f0;
+}
+
+.custom-dropdown-btn .dropdown-arrow {
+  color: #64748b;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.custom-dropdown-btn.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.custom-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  background-color: #ffffff;
+  border: 1.5px solid #0b3c6d;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.custom-dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-search-box {
+  padding: 10px 12px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.dropdown-search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 34px;
+  font-size: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+}
+
+.dropdown-search-box input:focus {
+  border-color: #0b3c6d;
+}
+
+.dropdown-search-box .search-icon {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.dropdown-items-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.dropdown-item-custom {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1e293b;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  white-space: normal !important;
+  word-break: break-word;
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: background-color 0.15s ease;
+}
+
+.dropdown-item-custom:hover {
+  background-color: #eff6ff;
+  color: #0b3c6d;
+}
+
+.dropdown-item-custom.selected {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+}
+
+.dropdown-badge {
+  background-color: #e0f2fe;
+  color: #0284c7;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  border: 1px solid #bae6fd;
+}
+
+.dropdown-item-empty {
+  padding: 16px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* Kotak Nomor Surat Otomatis */
+.nomor-surat-box {
+  border: 2px dashed #3b82f6;
+  background-color: #eff6ff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #15803d;
+  font-weight: 600;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nomor-surat-box.empty {
+  color: #94a3b8;
+  font-weight: 400;
+  justify-content: flex-start;
+}
+
+/* Tombol Copy Nomor Surat */
+.btn-copy {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.btn-copy:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* Tombol Kirim / Submit */
+.submitBtn {
+  width: 100%;
+  background-color: #0b3c6d;
+  color: #ffffff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submitBtn:hover {
+  background-color: #072a4e;
+}
+
+.submitBtn:active {
+  transform: scale(0.99);
+}
+
+.d-none {
+  display: none !important;
+}
+
+/* Checkbox Penyesuaian */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #0b3c6d;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+
+
+/* Modal Popup Update Script */
+.script-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.script-modal-content {
+  background-color: #ffffff;
+  margin: 4% auto;
+  padding: 24px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 720px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.script-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.script-modal-header h4 {
+  margin: 0;
+  color: #0b3c6d;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.script-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.script-modal-body {
+  overflow-y: auto;
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.script-code-block {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+  margin: 12px 0;
+  white-space: pre;
+}
+
+.btn-copy-script {
+  background-color: #0b3c6d;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
